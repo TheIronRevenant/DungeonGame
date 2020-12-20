@@ -39,8 +39,8 @@ int main(void)
 	}
 
 	//Size should adapt to screen size... eventually
-	const int defaultWidth = 2000;
-	const int defaultHeight = 1500;
+	const int defaultWidth = 1000;
+	const int defaultHeight = 800;
 	window = glfwCreateWindow(defaultWidth, defaultHeight, "Dungeon Game", NULL, NULL);
 	if (!window)
 	{

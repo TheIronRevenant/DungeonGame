@@ -49,7 +49,7 @@ DG::Game::Game(GLFWwindow* window, const std::string& vertexPath, const std::str
 
 	std::vector<float> vertices2 = {
 		0.25f, 0.5f, 0.0f,		1.0f, 1.0f, //Top Right
-		0.25f, -0.5f, 0.0f,		1.0f, 0.0f, //Bottom //Right
+		0.25f, -0.5f, 0.0f,		1.0f, 0.0f, //Bottom Right
 		-0.25f, -0.5f, 0.0f,	0.0f, 0.0f, //Bottom Left
 		-0.25f, 0.5f, 0.0f,		0.0f, 1.0f //Top Left
 	};
