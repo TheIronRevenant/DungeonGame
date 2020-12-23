@@ -39,8 +39,11 @@ int main(void)
 	}
 
 	//Size should adapt to screen size... eventually
-	const int defaultWidth = 1000;
-	const int defaultHeight = 800;
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* vidMode;
+	vidMode = glfwGetVideoMode(monitor);
+	const int defaultWidth = vidMode->width / 1.92;
+	const int defaultHeight = vidMode->height / 1.35;
 	window = glfwCreateWindow(defaultWidth, defaultHeight, "Dungeon Game", NULL, NULL);
 	if (!window)
 	{
@@ -52,6 +55,15 @@ int main(void)
 	else
 	{
 		DG::log << "Window created successfully\n";
+	}
+
+	{
+		int monitorX;
+		int monitorY;
+		glfwGetMonitorPos(monitor, &monitorX, &monitorY);
+		glfwSetWindowPos(window,
+			monitorX + (vidMode->width - defaultWidth) / 2,
+			monitorY + (vidMode->height - defaultHeight) / 2);
 	}
 
 	glfwMakeContextCurrent(window);
