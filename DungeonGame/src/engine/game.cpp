@@ -2,6 +2,7 @@
 #include "logger.hpp"
 #include "gameobject.hpp"
 #include "opengl/texture.hpp"
+#include "sceneloader.hpp"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
@@ -35,7 +36,7 @@ DG::Game::Game(GLFWwindow* window, const std::string& vertexPath, const std::str
 	*/
 
 	//Coords, Color, Texture
-	std::vector<float> vertices = {
+	/*std::vector<float> vertices = {
 		0.5f, 0.5f, -20.0f,	1.0f, 1.0f, //Top Right
 		0.5f, -0.5f, -20.0f,	1.0f, 0.0f, //Bottom Right
 		-0.5f, -0.5f, 0.0f,	0.0f, 0.0f, //Bottom Left
@@ -61,7 +62,8 @@ DG::Game::Game(GLFWwindow* window, const std::string& vertexPath, const std::str
 
 	currentScene.opaqueObjects.emplace_back(vertices, indices, textures["Default"], shaderProgram.getId());
 	glm::mat4 trans = glm::translate(glm::mat4(1.0f), glm::vec3(0.75f, 0.0f, 0.0f));
-	currentScene.opaqueObjects.emplace_back(trans, vertices2, indices2, textures["Default"], shaderProgram.getId());
+	currentScene.opaqueObjects.emplace_back(trans, vertices2, indices2, textures["Default"], shaderProgram.getId());*/
+	DG::loadScene("resources\\scenes\\test.dat", currentScene, shaderProgram);
 	currentScene.camera.setPosition(glm::vec3(0.0f, 0.0f, 3.0f));
 
 	projection = glm::perspective(glm::radians(45.0f), (float)windowInfo.windowWidth / (float)windowInfo.windowHeight, 0.1f, 100.f);

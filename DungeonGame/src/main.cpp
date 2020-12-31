@@ -42,8 +42,8 @@ int main(void)
 	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode* vidMode;
 	vidMode = glfwGetVideoMode(monitor);
-	const int defaultWidth = vidMode->width / 1.92;
-	const int defaultHeight = vidMode->height / 1.35;
+	const int defaultWidth = (int)(vidMode->width / 1.92);
+	const int defaultHeight = (int)(vidMode->height / 1.35);
 	window = glfwCreateWindow(defaultWidth, defaultHeight, "Dungeon Game", NULL, NULL);
 	if (!window)
 	{
