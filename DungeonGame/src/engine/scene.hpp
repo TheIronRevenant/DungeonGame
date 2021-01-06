@@ -2,6 +2,7 @@
 
 #include "camera.hpp"
 #include "gameobject.hpp"
+#include "../game/player.hpp"
 
 #include <vector>
 
@@ -15,6 +16,6 @@ namespace DG
 
 		std::vector<GameObject> opaqueObjects;
 		std::vector<GameObject> transparentObjects;
-		Camera camera;
+		Player player;
 	};
 }

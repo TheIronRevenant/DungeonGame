@@ -9,7 +9,7 @@
 
 void DG::Renderer::draw(DG::Scene& scene, Shader& shader)
 {
-	glm::mat4 view = scene.camera.getViewMatrix();
+	glm::mat4 view = scene.player.camera.getViewMatrix();
 	shader.setMat4("view", view);
 
 	//Draw all opaque objects before transparent objects
@@ -21,8 +21,8 @@ void DG::Renderer::draw(DG::Scene& scene, Shader& shader)
 
 	std::sort(scene.transparentObjects.begin(), scene.transparentObjects.end(),
 		[&scene](const GameObject& a, const GameObject& b) -> bool {
-			float aLength = glm::length2(scene.camera.getPosition() - a.getPosition());
-			float bLength = glm::length2(scene.camera.getPosition() - b.getPosition());
+			float aLength = glm::length2(scene.player.camera.getPosition() - a.getPosition());
+			float bLength = glm::length2(scene.player.camera.getPosition() - b.getPosition());
 			//Use the opposite because we want to render from farthest to nearest
 			return aLength > bLength;
 		});

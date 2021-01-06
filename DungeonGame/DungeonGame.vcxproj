@@ -170,6 +170,7 @@ xcopy /Y /S "$(ProjectDir)resources\" "$(TargetDir)\resources\"</Command>
     <ClCompile Include="src\engine\opengl\vertexarrayobject.cpp" />
     <ClCompile Include="src\engine\scene.cpp" />
     <ClCompile Include="src\engine\sceneloader.cpp" />
+    <ClCompile Include="src\game\player.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +185,7 @@ xcopy /Y /S "$(ProjectDir)resources\" "$(TargetDir)\resources\"</Command>
     <ClInclude Include="src\engine\scene.hpp" />
     <ClInclude Include="src\engine\sceneloader.hpp" />
     <ClInclude Include="src\engine\stb\stb_image.h" />
+    <ClInclude Include="src\game\player.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shaders\fragment.frag" />

@@ -99,6 +99,7 @@ void loadSection(std::string data, std::vector<DG::GameObject>& objects, const D
 				{
 					glm::mat4 transform = glm::translate(glm::mat4(1.0f), translate);
 					objects.emplace_back(transform, vertices, indices, DG::textures[texture], shader.getId());
+					break;
 				}
 			}
 		}

@@ -34,37 +34,8 @@ DG::Game::Game(GLFWwindow* window, const std::string& vertexPath, const std::str
 	/*
 	Test scene creation
 	*/
-
-	//Coords, Color, Texture
-	/*std::vector<float> vertices = {
-		0.5f, 0.5f, -20.0f,	1.0f, 1.0f, //Top Right
-		0.5f, -0.5f, -20.0f,	1.0f, 0.0f, //Bottom Right
-		-0.5f, -0.5f, 0.0f,	0.0f, 0.0f, //Bottom Left
-		-0.5, 0.5f, 0.0f,	0.0f, 1.0f //Top Left
-	};
-
-	std::vector<unsigned int> indices = {
-		0, 1, 3, //First Triangle
-		1, 2, 3 //Second Triangle
-	};
-
-	std::vector<float> vertices2 = {
-		0.25f, 0.5f, 0.0f,		1.0f, 1.0f, //Top Right
-		0.25f, -0.5f, 0.0f,		1.0f, 0.0f, //Bottom Right
-		-0.25f, -0.5f, 0.0f,	0.0f, 0.0f, //Bottom Left
-		-0.25f, 0.5f, 0.0f,		0.0f, 1.0f //Top Left
-	};
-
-	std::vector<unsigned int> indices2 = {
-		0, 1, 3, //First Triangle
-		1, 2, 3 //Second Triangle
-	};
-
-	currentScene.opaqueObjects.emplace_back(vertices, indices, textures["Default"], shaderProgram.getId());
-	glm::mat4 trans = glm::translate(glm::mat4(1.0f), glm::vec3(0.75f, 0.0f, 0.0f));
-	currentScene.opaqueObjects.emplace_back(trans, vertices2, indices2, textures["Default"], shaderProgram.getId());*/
 	DG::loadScene("resources\\scenes\\test.dat", currentScene, shaderProgram);
-	currentScene.camera.setPosition(glm::vec3(0.0f, 0.0f, 3.0f));
+	currentScene.player.setPosition(glm::vec3(0.0f, 0.0f, 3.0f));
 
 	projection = glm::perspective(glm::radians(45.0f), (float)windowInfo.windowWidth / (float)windowInfo.windowHeight, 0.1f, 100.f);
 
@@ -117,6 +88,7 @@ int DG::Game::init()
 
 void DG::Game::update()
 {
+	currentScene.player.update(window, deltaTime);
 	processInput();
 }
 
@@ -126,32 +98,13 @@ void DG::Game::processInput()
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
-
-	if (!cameraLocked)
-	{
-		int forward = 0;
-		int side = 0;
-		if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-			forward += 1;
-		if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-			forward -= 1;
-		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-			side -= 1;
-		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-			side += 1;
-
-		glm::vec3 move((float)side, 0.0f, (float)forward);
-
-		if (move != glm::vec3(0.0f))
-			currentScene.camera.move(move, deltaTime);
-	}
 }
 
 void DG::Game::processMouse(double xpos, double ypos)
 {
 	if (!cameraLocked)
 	{
-		currentScene.camera.processMouse(xpos, ypos);
+		currentScene.player.camera.processMouse(xpos, ypos);
 	}
 }
 
