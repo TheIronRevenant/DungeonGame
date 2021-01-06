@@ -17,8 +17,6 @@ namespace DG
 		glm::vec3 getFront() const { return front; }
 		glm::vec3 getRight() const { return right; }
 
-		bool freeMove = false;
-
 		static const float YAW;
 		static const float PITCH;
 		static const float SPEED;
@@ -34,7 +32,6 @@ namespace DG
 
 		float yaw;
 		float pitch;
-		float speed;
 		float sensitivity;
 
 		bool firstMouse = true;
